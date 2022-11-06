@@ -1,4 +1,11 @@
 D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\dao\AccountDAO.java
+D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\model\Order.java
 D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\servlets\SignUpServlet.java
+D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\dao\OrderDAO.java
+D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\model\Cart.java
+D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\model\Product.java
+D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\servlets\LoginServlet.java
 D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\model\Account.java
+D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\dao\CartDAO.java
 D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\connection\DBConnection.java
+D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\dao\ProductDAO.java

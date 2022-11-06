@@ -4,6 +4,10 @@
     Author     : Nguyen Huyen Tran <CE161052>
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.model.Product"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.dao.ProductDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="zxx">
@@ -31,9 +35,20 @@
         <link rel="stylesheet" href="css/slick.css">
         <!-- style CSS -->
         <link rel="stylesheet" href="css/style.css">
+
+        <style>
+            #foot {
+                height: 50px;
+                background-color: #4B3049;
+            }
+        </style>
     </head>
 
     <body>
+        <%
+            ProductDAO productDAO = new ProductDAO();
+            ResultSet rs;
+        %>
         <!--::header part start::-->
         <jsp:include page="header.jsp" flush="true"/>
         <!-- Header part end-->
@@ -67,6 +82,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
+
                         <div class="single_product_iner">
                             <div class="row align-items-center justify-content-between">
                                 <div class="col-lg-6 col-sm-6">
@@ -137,57 +153,26 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section_tittle text-center">
-                            <h2>Trending Items</h2>
+                            <h2>New Arrivals</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
+                    <%
+                        ArrayList<Product> arr = productDAO.productGetAll_Arr();
+                        for (Product pro : arr.subList(arr.size() - 6, arr.size())) {
+
+                    %>
                     <div class="col-lg-4 col-sm-6">
                         <div class="single_product_item">
                             <div class="single_product_item_thumb">
-                                <img src="img/tranding_item/tranding_item_1.png" alt="#" class="img-fluid">
+                                <img src="<%= pro.getPdt_image()%>" alt="#" class="img-fluid">
                             </div>
-                            <h3> <a href="single-product.html">Cervical pillow for airplane
-                                    car office nap pillow</a> </h3>
-                            <p>From $5</p>
+                            <h3> <a href="single-product.jsp"><%= pro.getPdt_name()%></a> </h3>
+                            <p>From $ <%= pro.getPdt_price()%></p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_product_item">
-                            <img src="img/tranding_item/tranding_item_2.png" alt="#" class="img-fluid">
-                            <h3> <a href="single-product.html">Foam filling cotton slow rebound pillows</a> </h3>
-                            <p>From $5</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_product_item">
-                            <img src="img/tranding_item/tranding_item_3.png" alt="#" class="img-fluid">
-                            <h3> <a href="single-product.html">Memory foam filling cotton Slow rebound pillows</a> </h3>
-                            <p>From $5</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_product_item">
-                            <img src="img/tranding_item/tranding_item_4.png" alt="#" class="img-fluid">
-                            <h3> <a href="single-product.html">Cervical pillow for airplane
-                                    car office nap pillow</a> </h3>
-                            <p>From $5</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_product_item">
-                            <img src="img/tranding_item/tranding_item_5.png" alt="#" class="img-fluid">
-                            <h3> <a href="single-product.html">Foam filling cotton slow rebound pillows</a> </h3>
-                            <p>From $5</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_product_item">
-                            <img src="img/tranding_item/tranding_item_6.png" alt="#" class="img-fluid">
-                            <h3> <a href="single-product.html">Memory foam filling cotton Slow rebound pillows</a> </h3>
-                            <p>From $5</p>
-                        </div>
-                    </div>
+                    <% }%>
                 </div>
             </div>
         </section>
@@ -203,8 +188,8 @@
                                 <div class="client_img">
                                     <img src="img/client.png" alt="#">
                                 </div>
-                                <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
-                                <h5>- Micky Mouse</h5>
+                                <p>CE000000</p>
+                                <h5>- Đỗ Huỳnh Anh Vũ</h5>
                             </div>
                             <div class="single_client_review">
                                 <div class="client_img">
@@ -216,6 +201,13 @@
                             <div class="single_client_review">
                                 <div class="client_img">
                                     <img src="img/client_2.png" alt="#">
+                                </div>
+                                <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
+                                <h5>- Micky Mouse</h5>
+                            </div>
+                            <div class="single_client_review">
+                                <div class="client_img">
+                                    <img src="img/client.png" alt="#">
                                 </div>
                                 <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
                                 <h5>- Micky Mouse</h5>
@@ -276,26 +268,13 @@
         <!-- feature part end -->
 
         <!-- subscribe part here -->
-        <section class="subscribe_part section_padding">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="subscribe_part_content">
-                            <h2>Get promotions & updates!</h2>
-                            <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources credibly innovate granular internal .</p>
-                            <div class="subscribe_form">
-                                <input type="email" placeholder="Enter your mail">
-                                <a href="#" class="btn_1">Subscribe</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div id ="foot">
+            <jsp:include page="footer.jsp" flush="true"/>
+        </div>
         <!-- subscribe part end -->
 
         <!--::footer_part start::-->
-         <jsp:include page="footer.jsp" flush="true"/>
+
         <!--::footer_part end::-->
 
         <!-- jquery plugins here-->

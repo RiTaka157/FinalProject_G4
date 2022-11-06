@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -30,6 +31,16 @@ public class ProductDAO {
         Statement st = conn.createStatement();
         rs = st.executeQuery("Select* from Product");
         return rs;
+    }
+    
+      public ArrayList<Product> productGetAll_Arr() throws SQLException {
+        Statement st = conn.createStatement();
+        ArrayList<Product> arr = new ArrayList<>();
+        rs = st.executeQuery("Select* from Product");
+          while (rs.next()) {              
+              arr.add( new Product(Integer.parseInt(rs.getString(1)), rs.getString(2), rs.getString(3), rs.getString(4)));
+          }
+        return arr;
     }
     
       public int productGetLenght() throws SQLException {
