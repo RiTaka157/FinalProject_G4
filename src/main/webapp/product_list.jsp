@@ -4,6 +4,8 @@
     Author     : Nguyen Huyen Tran <CE161052>
 --%>
 
+<%@page import="com.model.Product"%>
+<%@page import="com.dao.ProductDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="zxx">
@@ -51,7 +53,10 @@
             </div>
         </section>
         <!-- breadcrumb part end-->
-
+        <%
+            ProductDAO productDAO = new ProductDAO();
+            Product[] products = productDAO.getAllproduct();
+        %>
         <!-- product list part start-->
         <section class="product_list section_padding">
             <div class="container">
@@ -91,81 +96,20 @@
                     <div class="col-md-8">
                         <div class="product_list">
                             <div class="row">
+                                <% 
+                                    for (Product product : products) {
+                                %>
                                 <div class="col-lg-6 col-sm-6">
                                     <div class="single_product_item">
-                                        <img src="img/product/product_list_1.png" alt="#" class="img-fluid">
-                                        <h3> <a href="single-product.jsp">Cervical pillow for airplane
-                                                car office nap pillow</a> </h3>
-                                        <p>From $5</p>
+                                        <img src="<%=product.getPdt_image()%>.png" alt="#" class="img-fluid">
+                                        <h3> <a href="single-product.jsp?product_id=<%= product.getPdt_id() %>"><%= product.getPdt_name()%></a> </h3>
+                                        <p>From <%= product.getPdt_price() %>$</p>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="img/product/product_list_2.png" alt="#" class="img-fluid">
-                                        <h3> <a href="single-product.jsp">Geometric striped flower home classy decor</a> </h3>
-                                        <p>From $5</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="img/product/product_list_3.png" alt="#" class="img-fluid">
-                                        <h3> <a href="single-product.jsp">Foam filling cotton slow rebound pillows</a> </h3>
-                                        <p>From $5</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="img/product/product_list_4.png" alt="#" class="img-fluid">
-                                        <h3> <a href="single-product.jsp">Memory foam filling cotton Slow rebound pillows</a> </h3>
-                                        <p>From $5</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="img/product/product_list_5.png" alt="#" class="img-fluid">
-                                        <h3> <a href="single-product.jsp">Memory foam filling cotton Slow rebound pillows</a> </h3>
-                                        <p>From $5</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="img/product/product_list_6.png" alt="#" class="img-fluid">
-                                        <h3> <a href="single-product.jsp">Sleeping orthopedic sciatica Back Hip Joint Pain relief</a> </h3>
-                                        <p>From $5</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="img/product/product_list_7.png" alt="#" class="img-fluid">
-                                        <h3> <a href="single-product.jsp">Memory foam filling cotton Slow rebound pillows</a> </h3>
-                                        <p>From $5</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="img/product/product_list_8.png" alt="#" class="img-fluid">
-                                        <h3> <a href="single-product.jsp">Sleeping orthopedic sciatica Back Hip Joint Pain relief</a> </h3>
-                                        <p>From $5</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="img/product/product_list_9.png" alt="#" class="img-fluid">
-                                        <h3> <a href="single-product.jsp">Geometric striped flower home classy decor</a> </h3>
-                                        <p>From $5</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="img/product/product_list_10.png" alt="#" class="img-fluid">
-                                        <h3> <a href="single-product.jsp">Geometric striped flower home classy decor</a> </h3>
-                                        <p>From $5</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="load_more_btn text-center">
-                                <a href="#" class="btn_3">Load More</a>
-                            </div>
+                                <% 
+                                    }
+                                %>
+                                
                         </div>
                     </div>
                 </div>

@@ -20,9 +20,16 @@ public class ProductDAO {
     private Connection conn = null;
     PreparedStatement pst;
     ResultSet rs = null;
+    Product[] allproduct = null;
 
+    public Product[] getAllproduct() {
+        return allproduct;
+    }
+    
+    
     public ProductDAO() throws ClassNotFoundException, SQLException {
          conn = DBConnection.getConnection();
+         allproduct = getProducts();
     }
 
 
@@ -32,11 +39,21 @@ public class ProductDAO {
         return rs;
     }
     
+    public Product[] getProducts() throws SQLException {
+        ResultSet rs = productGetAll();
+        Product[] products = new Product[productGetLenght()];
+        int count = 0;
+        while (rs.next()) {
+            products[count++] = new Product(Integer.parseInt(rs.getString(1)), rs.getString(2), rs.getString(3), rs.getString(4));
+        }
+        return products;
+    }
+    
       public int productGetLenght() throws SQLException {
         Statement st = conn.createStatement();
         rs = st.executeQuery("Select COUNT(*) as CountProduct from Product");
         rs.next();
-        return rs.getInt("CountProduct");
+        return rs.getInt(1);
     }
 
     public Product getProductById(int pdt_id) throws SQLException {

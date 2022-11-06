@@ -15,20 +15,20 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
 
-         <%  String userName = "";
+
+        <%  String userName = "";
             if (request.getCookies().length > 0) {
                 for (Cookie c : request.getCookies()) {
                     if (c.getName().equals("username")) {
                         userName = c.getValue();
                     }
                 }
-            } 
+            }
             AccountDAO DAO = new AccountDAO();
             ResultSet rs = DAO.accountGetAll();
             Account acc = DAO.getAccountByAccName(userName);
-            %>
+        %>
         <header class="main_menu home_menu">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
@@ -48,16 +48,10 @@
                                     <!-- <li class="nav-item">
                                         <a class="nav-link" href="about.html">about</a>
                                     </li> -->
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_1"
-                                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            product
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                            <a class="dropdown-item" href="product_list.jsp"> product list</a>
-                                            <a class="dropdown-item" href="single-product.jsp">product details</a>
+                                    <li class="nav-itemn">
 
-                                        </div>
+                                        <a class="nav-link" href="product_list.jsp">Product</a>
+
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3"
@@ -71,7 +65,7 @@
 
                                         </div>
                                     </li>
-                                    <% if (acc==null) {%>
+                                    <% if (acc == null) {%>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="login.jsp" id="navbarDropdown_2"
                                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -82,21 +76,21 @@
                                             <a class="dropdown-item" href="signup.jsp">signup</a>
                                         </div>
                                     </li> 
-                                    <% } else { %>
+                                    <% } else {%>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_2"
                                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <%= acc.getUs_FullName() %>
+                                            <%= acc.getUs_FullName()%>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                                             <a class="dropdown-item" href="LoginServlet"> logout</a>
                                         </div>
                                     </li> 
-                                        
-                                    <% } %>
-<!--                                    <li class="nav-item">
-                                        <a class="nav-link" href="contact.jsp">Contact</a>
-                                    </li>-->
+
+                                    <% }%>
+                                    <!--                                    <li class="nav-item">
+                                                                            <a class="nav-link" href="contact.jsp">Contact</a>
+                                                                        </li>-->
                                 </ul>
                             </div>
                             <div class="hearer_icon d-flex align-items-center">

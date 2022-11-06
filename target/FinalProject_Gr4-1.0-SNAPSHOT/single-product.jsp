@@ -4,6 +4,8 @@
     Author     : Nguyen Huyen Tran <CE161052>
 --%>
 
+<%@page import="com.model.Product"%>
+<%@page import="com.dao.ProductDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="zxx">
@@ -37,7 +39,10 @@
         <!--::header part start::-->
         <jsp:include page="header.jsp" flush="true"/>
         <!-- Header part end-->
-
+        <% 
+            ProductDAO dao = new ProductDAO();
+            Product product = dao.getProductById(Integer.parseInt(request.getParameter("product_id")));
+        %>
         <!-- breadcrumb part start-->
         <section class="breadcrumb_part single_product_breadcrumb">
             <div class="container">
@@ -57,21 +62,20 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
                         <div class="product_img_slide owl-carousel">
+                            <% 
+                                for (int i = 0; i < 3; i++) {
+                            %>
                             <div class="single_product_img">
-                                <img src="img/product/single_product.png" alt="#" class="img-fluid">
+                                <img src="<%= product.getPdt_image()  %>.png" alt="#" class="img-fluid">
                             </div>
-                            <div class="single_product_img">
-                                <img src="img/product/single_product.png" alt="#" class="img-fluid">
-                            </div>
-                            <div class="single_product_img">
-                                <img src="img/product/single_product.png" alt="#" class="img-fluid">
-                            </div>
+                            <%
+                                }
+                            %>
                         </div>
                     </div>
                     <div class="col-lg-8">
                         <div class="single_product_text text-center">
-                            <h3>Foam filling cotton slow <br>
-                                rebound pillows</h3>
+                            <h3><%= product.getPdt_name() %></h3>
                             <p>
                                 Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources. Credibly innovate granular internal or “organic” sources whereas high standards in web-readiness. Credibly innovate granular internal or organic sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences. Dramatically synthesize integrated schemas. with optimal networks.
                             </p>
@@ -80,10 +84,10 @@
                                     <p>Quantity</p>
                                     <div class="product_count d-inline-block">
                                         <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
-                                        <input class="product_count_item input-number" type="text" value="1" min="0" max="10">
+                                        <input class="product_count_item input-number" name="quantity" type="text" value="1" min="0" max="10">
                                         <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
                                     </div>
-                                    <p>$5</p>
+                                    <p>$<%= product.getPdt_price() %></p>
                                 </div>
                                 <div class="add_to_cart">
                                     <a href="#" class="btn_3">add to cart</a>
