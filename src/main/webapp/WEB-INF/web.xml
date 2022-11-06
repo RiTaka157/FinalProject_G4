@@ -8,6 +8,10 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.servlets.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductDAO</servlet-name>
+        <servlet-class>com.dao.ProductDAO</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpServlet</servlet-name>
         <url-pattern>/SignUpServlet</url-pattern>

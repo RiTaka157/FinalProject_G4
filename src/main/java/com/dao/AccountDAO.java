@@ -28,13 +28,13 @@ public class AccountDAO {
         conn = DBConnection.getConnection();
     }
 
-    public ResultSet getAll() throws SQLException {
+    public ResultSet accountGetAll() throws SQLException {
         Statement st = conn.createStatement();
         rs = st.executeQuery("Select* from Account");
         return rs;
     }
     
-      public int getLenght() throws SQLException {
+      public int accountGetLenght() throws SQLException {
         Statement st = conn.createStatement();
         rs = st.executeQuery("Select COUNT(*) as CountAcc from Account");
         rs.next();
@@ -71,7 +71,7 @@ public class AccountDAO {
         return account;
     }
 
-    public int addNew(Account account) throws SQLException {
+    public int accountAddNew(Account account) throws SQLException {
         int count = 0;
 
 //        PreparedStatement pst = conn.prepareStatement("Insert into Student values(?,?,?,?,?,?)");
@@ -89,19 +89,22 @@ public class AccountDAO {
 
     }
 
-//    public int updateStudent(Account s) throws SQLException {
-//        int count = 0;
-//        pst = conn.prepareStatement("UPDATE STUDENT SET s_name=?,s_birthday=?,s_gender=?,s_address=?,c_id=? WHERE s_id=?");
-//
-//        pst.setString(1, s.getName());
-//        pst.setDate(2, s.getBirthdate());
-//        pst.setString(3, s.getGender());
-//        pst.setString(4, s.getAddress());
-//        pst.setString(5, s.getClassid());
-//        pst.setString(6, s.getId());
-//        count = pst.executeUpdate();
-//        return count;
-//    }
+    public int accountUpdate(Account ac) throws SQLException {
+        int count = 0;
+        pst = conn.prepareStatement("UPDATE ACCOUNT SET Acc_Name=?,Acc_Password=?,Acc_Role=?,Us_FullName=?,Us_Mail=?,Us_Phone=?,Us_Address=? WHERE Acc_ID=?");
+
+        pst.setString(1, ac.getAcc_Name());
+        pst.setString(2, ac.getAcc_Password());
+        pst.setString(3, ac.getAcc_Role());
+        pst.setString(4, ac.getUs_FullName());
+        pst.setString(5, ac.getUs_Mail());
+        pst.setString(6, ac.getUs_Phone());
+        pst.setString(7, ac.getUs_Address());
+        pst.setString(8, ac.getAcc_ID()+"");
+        count = pst.executeUpdate();
+        return count;
+    }
+//    
 //    public void deleteStudent(String id) throws SQLException {
 //        pst = conn.prepareStatement("DELETE FROM Account WHERE s_id=?");
 //        pst.setString(1, id);

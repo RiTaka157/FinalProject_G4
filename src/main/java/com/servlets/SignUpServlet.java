@@ -92,7 +92,7 @@ public class SignUpServlet extends HttpServlet {
             try {
                 AccountDAO DAO = new AccountDAO();
                 if (request.getParameter("btnAdd") != null) {
-                    int Acc_ID = DAO.getLenght();
+                    int Acc_ID = DAO.accountGetLenght();
                     String Acc_Name = request.getParameter("txtUserName");
                     String Acc_Password = request.getParameter("txtPassword");
                     MessageDigest md = MessageDigest.getInstance("MD5");
@@ -110,7 +110,7 @@ public class SignUpServlet extends HttpServlet {
                     String Us_Address = request.getParameter("txtAddress");
 
                     Account acc = new Account(Acc_ID, Acc_Name, Acc_Password, Acc_Role, Us_FullName, Us_Mail, Us_Phone, Us_Address);
-                    DAO.addNew(acc);
+                    DAO.accountAddNew(acc);
                     response.getWriter().append("PassswordCorrect");
                     Cookie cookie = new Cookie("username", Acc_Name);
                     cookie.setMaxAge(3 * 24 * 60 * 60);

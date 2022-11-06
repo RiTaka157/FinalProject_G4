@@ -26,7 +26,7 @@
                 }
             } 
             AccountDAO DAO = new AccountDAO();
-            ResultSet rs = DAO.getAll();
+            ResultSet rs = DAO.accountGetAll();
             Account acc = DAO.getAccountByAccName(userName);
             %>
         <header class="main_menu home_menu">
