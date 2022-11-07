@@ -53,13 +53,7 @@ public class OrderDAO {
         return or;
     }
     
-    public int getNumOrderByAcc_id(int Acc_id) throws SQLException {
-        PreparedStatement pst = conn.prepareStatement("Select COUNT(*) as CountOrder from [Order] where Acc_ID=? ");
-        pst.setString(1, Acc_id+"");
-        ResultSet rs = pst.executeQuery();
-        rs.next();
-        return rs.getInt("CountOrder");
-    }
+
     
      public ArrayList<Order> getOrderByAcc_id(int Acc_id) throws SQLException {
         PreparedStatement pst = conn.prepareStatement("Select * from [Order] where  Acc_ID=? ");

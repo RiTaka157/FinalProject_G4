@@ -66,6 +66,11 @@
             ProductDAO productDAO = new ProductDAO();
             ResultSet rs = accDAO.accountGetAll();
             Account acc = accDAO.getAccountByAccName(userName);
+            int Sum = 0;
+            ArrayList<Cart> cartArr = cartDAO.getCartByAcc_IDNull(acc.getAcc_ID());
+            Product pr;
+            OrderDAO orderDAO = new OrderDAO();
+            String Order_id = acc.getUs_Phone().substring(acc.getUs_Phone().length() - 4, acc.getUs_Phone().length()) + "" + cartDAO.getNumOrderbyAcc_id(acc.getAcc_ID());
         %>
         <!-- breadcrumb part start-->
         <section class="breadcrumb_part">
@@ -82,11 +87,14 @@
         <!-- breadcrumb part end-->
 
         <!--================Cart Area =================-->
-        <section class="cart_area section_padding">
+        <br>
+        <section class="cart_area ">
             <div class="container">
                 <div class="cart_inner">
                     <div class="table-responsive">
-                        <form action="CartServlet" method="post">
+                        <form action="checkout.jsp">
+                            <input name="Acc_ID" value="<%=acc.getAcc_ID()%>" hidden readonly>
+                            <input name="Order_ID" value="<%=Order_id%>" hidden readonly>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -99,11 +107,6 @@
                                 <tbody>
 
                                     <%
-                                        int Sum = 0;
-                                        ArrayList<Cart> cartArr = cartDAO.getCartByAcc_IDNull(acc.getAcc_ID());
-                                        Product pr;
-                                        OrderDAO orderDAO = new OrderDAO();
-                                        String Order_id = acc.getUs_Phone().substring(acc.getUs_Phone().length()-4, acc.getUs_Phone().length()) + "" + cartDAO.getNumOrderbyAcc_id(acc.getAcc_ID());
                                         for (Cart ca : cartArr) {
                                             pr = productDAO.getProductById(ca.getPdt_id());
                                     %>
@@ -167,7 +170,7 @@
                                                     </li>
                                                     <li>
                                                         Free Shipping
-                                                        <input name="ship" id="ship" type="radio">
+                                                        <input name="ship" id="ship" type="radio" checked>
                                                     </li>
                                                     <li>
                                                         Flat Rate: $10.00
@@ -187,7 +190,7 @@
                             <div class="checkout_btn_inner float-right">
                                 <a class="btn_1" href="product_list.jsp">Continue Shopping </a>
 
-                                <input type="submit" id="checkout" class="btn_1 checkout_btn_1" value="Proceed to checkout" />
+                                <input type="submit" id="checkout" name="checkout" class="btn_1 checkout_btn_1" value="Proceed to checkout" />
                             </div>
                         </form>
 

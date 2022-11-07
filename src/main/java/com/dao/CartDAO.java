@@ -6,6 +6,7 @@ package com.dao;
 
 import com.connection.DBConnection;
 import com.model.Cart;
+import com.model.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -62,13 +63,12 @@ public class CartDAO {
         return cart;
     }
 
-    public int getNumOrderbyAcc_id(int Acc_ID) throws SQLException {
-        Statement st = conn.createStatement();
-        rs = st.executeQuery("Select Count(DISTINCT order_id) as CountOrder from Cart where Acc_ID=?");
+    public String getNumOrderbyAcc_id(int Acc_ID) throws SQLException {
+        PreparedStatement pst = conn.prepareStatement("Select Count(DISTINCT order_id) from Cart where Acc_ID=? and order_id is not null");
         pst.setInt(1, Acc_ID);
         ResultSet rs = pst.executeQuery();
         rs.next();
-        return rs.getInt("CountOrder");
+        return rs.getString(1);
     }
 
     public ArrayList<Cart> getCartByOrder_id(int order_id) throws SQLException {
