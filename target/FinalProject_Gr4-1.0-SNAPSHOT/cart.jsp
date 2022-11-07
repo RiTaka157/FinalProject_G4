@@ -4,6 +4,7 @@
     Author     : Nguyen Huyen Tran <CE161052>
 --%>
 
+<%@page import="com.dao.OrderDAO"%>
 <%@page import="java.lang.String"%>
 <%@page import="com.model.Product"%>
 <%@page import="com.dao.ProductDAO"%>
@@ -101,6 +102,8 @@
                                         int Sum = 0;
                                         ArrayList<Cart> cartArr = cartDAO.getCartByAcc_IDNull(acc.getAcc_ID());
                                         Product pr;
+                                        OrderDAO orderDAO = new OrderDAO();
+                                        String Order_id = acc.getUs_Phone().substring(acc.getUs_Phone().length()-4, acc.getUs_Phone().length()) + "" + cartDAO.getNumOrderbyAcc_id(acc.getAcc_ID());
                                         for (Cart ca : cartArr) {
                                             pr = productDAO.getProductById(ca.getPdt_id());
                                     %>
@@ -131,9 +134,9 @@
                                     </tr>
                                     <% }%>
                                     <tr>
-                                        <td></td><td></td><td></td>
-                                        <td>
-                                             <h4 scope="col" >TotalAll $<%=Sum%></h4>
+                                        <td colspan="2"></td>
+                                        <td colspan="2" scope="col" class="text-center">
+                                            <h4>Total Price: $<%=Sum%></h4>
                                         </td>
                                     </tr>
 
@@ -149,13 +152,45 @@
                                             </div>
                                         </td>
                                     </tr>
+                                    <tr class="shipping_area">
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <h5>Shipping</h5>
+                                        </td>
+                                        <td>
+                                            <div class="shipping_box">
+                                                <ul class="list">
+                                                    <li>
+                                                        Flat Rate: $5.00
+                                                        <input name="ship" id="ship" type="radio" >
+                                                    </li>
+                                                    <li>
+                                                        Free Shipping
+                                                        <input name="ship" id="ship" type="radio">
+                                                    </li>
+                                                    <li>
+                                                        Flat Rate: $10.00
+                                                        <input name="ship" id="ship" type="radio">
+                                                    </li>
+                                                    <li class="active">
+                                                        Local Delivery: $2.00
+                                                        <input name="ship" id="ship" type="radio" >
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
+                            <div class="checkout_btn_inner float-right">
+                                <a class="btn_1" href="product_list.jsp">Continue Shopping </a>
+
+                                <input type="submit" id="checkout" class="btn_1 checkout_btn_1" value="Proceed to checkout" />
+                            </div>
                         </form>
-                        <div class="checkout_btn_inner float-right">
-                            <a class="btn_1" href="productlist.jsp">Continue Shopping</a>
-                            <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
-                        </div>
+
                     </div>
                 </div>
         </section>
