@@ -8,13 +8,19 @@ import com.connection.DBConnection;
 import com.model.Cart;
 import com.model.Order;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+=======
+import java.time.LocalDate;
+import java.util.ArrayList;
+>>>>>>> dbd018c5f1b5170a30d3137d15080fef4a2f9dc4
 
 /**
  *
@@ -38,7 +44,7 @@ public class OrderDAO {
     
       public int OrderGetLenght() throws SQLException {
         Statement st = conn.createStatement();
-        rs = st.executeQuery("Select COUNT(*) as CountOrder from Order");
+        rs = st.executeQuery("Select COUNT(*) as CountOrder from [Order]");
         rs.next();
         return rs.getInt("CountOrder");
     }
@@ -60,11 +66,30 @@ public class OrderDAO {
 
     public Order getOrderById(int order_id) throws SQLException {
         Order or = null;
-        PreparedStatement pst = conn.prepareStatement("Select * from Order where order_id=?");
+        PreparedStatement pst = conn.prepareStatement("Select * from [Order] where order_id=?");
         pst.setInt(1, order_id);
         ResultSet rs = pst.executeQuery();
         if (rs.next()) {
             or = new Order(order_id, rs.getDate(2), rs.getString(3), rs.getString(4));
+        }
+        return or;
+    }
+    
+    public int getNumOrderByAcc_id(int Acc_id) throws SQLException {
+        PreparedStatement pst = conn.prepareStatement("Select COUNT(*) as CountOrder from [Order] where Acc_ID=? ");
+        pst.setString(1, Acc_id+"");
+        ResultSet rs = pst.executeQuery();
+        rs.next();
+        return rs.getInt("CountOrder");
+    }
+    
+     public ArrayList<Order> getOrderByAcc_id(int Acc_id) throws SQLException {
+        PreparedStatement pst = conn.prepareStatement("Select * from [Order] where  Acc_ID=? ");
+        pst.setString(1, Acc_id+"");
+        ResultSet rs = pst.executeQuery();
+        ArrayList<Order> or = new ArrayList<>();
+        while (rs.next()) {
+            or.add(new Order(Integer.valueOf(rs.getString(1)),Date.valueOf(rs.getString(2)), rs.getString(3), rs.getString(4)));
         }
         return or;
     }
@@ -74,7 +99,7 @@ public class OrderDAO {
         int count = 0;
 
 //        PreparedStatement pst = conn.prepareStatement("Insert into Student values(?,?,?,?,?,?)");
-        pst = conn.prepareStatement("insert into Order values(?,?,?,?)");
+        pst = conn.prepareStatement("insert into [Order] values(?,?,?,?)");
         pst.setInt(1, or.getOrder_id());
         pst.setDate(2, or.getOrder_date());
         pst.setString(3, or.getOrder_phone());
@@ -86,7 +111,7 @@ public class OrderDAO {
     
     public int orderUpdate(Order or ) throws SQLException {
         int count = 0;
-        pst = conn.prepareStatement("UPDATE Order SET order_date=?, order_phone=?, order_address=? WHERE order_id=?");
+        pst = conn.prepareStatement("UPDATE [Order] SET order_date=?, order_phone=?, order_address=? WHERE order_id=?");
 
         pst.setString(1, String.valueOf(or.getOrder_date()));
         pst.setString(2, or.getOrder_phone());
@@ -97,9 +122,12 @@ public class OrderDAO {
     }
     
     public void orderDelete(String order_id) throws SQLException {
+<<<<<<< HEAD
         pst = conn.prepareStatement("DELETE FROM [Cart] WHERE order_id=?");
         pst.setString(1, order_id);
         pst.executeUpdate();
+=======
+>>>>>>> dbd018c5f1b5170a30d3137d15080fef4a2f9dc4
         pst = conn.prepareStatement("DELETE FROM [Order] WHERE order_id=?");
         pst.setString(1, order_id);
         pst.executeUpdate();
