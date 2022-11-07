@@ -45,7 +45,7 @@
                                     <!-- <li class="nav-item">
                                         <a class="nav-link" href="about.html">about</a>
                                     </li> -->
-                                    <li class="nav-itemn">
+                                    <li class="nav-item">
 
                                         <a class="nav-link" href="product_list.jsp">Product</a>
 
@@ -118,7 +118,11 @@
                                             <a class="dropdown-item" href="addproduct.jsp">Add Product</a>
                                         </div>
                                     </li>
-                                    
+                                    <li class="nav-item">
+
+                                        <a class="nav-link" href="showOrder.jsp">Show Order</a>
+
+                                    </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_2"
                                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

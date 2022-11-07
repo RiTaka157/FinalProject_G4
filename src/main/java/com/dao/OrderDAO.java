@@ -5,6 +5,7 @@
 package com.dao;
 
 import com.connection.DBConnection;
+import com.model.Cart;
 import com.model.Order;
 import java.sql.Connection;
 import java.sql.Date;
@@ -12,8 +13,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+<<<<<<< HEAD
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+=======
 import java.time.LocalDate;
 import java.util.ArrayList;
+>>>>>>> dbd018c5f1b5170a30d3137d15080fef4a2f9dc4
 
 /**
  *
@@ -40,6 +47,21 @@ public class OrderDAO {
         rs = st.executeQuery("Select COUNT(*) as CountOrder from [Order]");
         rs.next();
         return rs.getInt("CountOrder");
+    }
+      
+    public boolean isAccHasOrder(int acc_id, int order_id) {
+            try {
+                CartDAO cartDAO = new CartDAO();
+                ArrayList<Cart> carts = cartDAO.getCartByAcc_ID(acc_id);
+                for (Cart cart : carts) {
+                    if (cart.getOrder_id() == order_id) return true;
+                }
+                        } catch (ClassNotFoundException ex) {
+                Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return false;
     }
 
     public Order getOrderById(int order_id) throws SQLException {
@@ -94,6 +116,12 @@ public class OrderDAO {
     }
     
     public void orderDelete(String order_id) throws SQLException {
+<<<<<<< HEAD
+        pst = conn.prepareStatement("DELETE FROM [Cart] WHERE order_id=?");
+        pst.setString(1, order_id);
+        pst.executeUpdate();
+=======
+>>>>>>> dbd018c5f1b5170a30d3137d15080fef4a2f9dc4
         pst = conn.prepareStatement("DELETE FROM [Order] WHERE order_id=?");
         pst.setString(1, order_id);
         pst.executeUpdate();
