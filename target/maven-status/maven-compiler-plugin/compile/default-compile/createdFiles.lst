@@ -1,12 +1,13 @@
-com\dao\CartDAO.class
 com\model\Cart.class
+com\servlets\AdminServlet.class
 com\servlets\LoginServlet.class
 com\dao\AccountDAO.class
 com\model\Account.class
 com\servlets\CartServlet.class
+com\model\Product.class
+com\dao\CartDAO.class
 com\connection\DBConnection.class
 com\servlets\SignUpServlet.class
 com\dao\OrderDAO.class
 com\dao\ProductDAO.class
 com\model\Order.class
-com\model\Product.class

@@ -91,7 +91,7 @@
                                         <h2> <a href="single-product.html">Printed memory foam 
                                                 brief modern throw 
                                                 pillow case</a> </h2>
-                                        <a href="product_list.html" class="btn_3">Explore Now</a>
+                                        <a href="single-product.jsp?product_id=9" class="btn_3">Explore Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                                         <h2> <a href="single-product.html">Printed memory foam 
                                                 brief modern throw 
                                                 pillow case</a> </h2>
-                                        <a href="product_list.html" class="btn_3">Explore Now</a>
+                                        <a href="single-product.jsp?product_id=5" class="btn_3">Explore Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@
                                         <h2> <a href="single-product.html">Printed memory foam 
                                                 brief modern throw 
                                                 pillow case</a> </h2>
-                                        <a href="product_list.html" class="btn_3">Explore Now</a>
+                                        <a href="single-product.jsp" class="btn_3">Explore Now</a>
                                     </div>
                                 </div>
                             </div>

@@ -29,6 +29,9 @@
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <a class="navbar-brand" href="index.jsp"> <img src="img/logo.png" alt="logo"> </a>
+                            <% 
+                                if (acc == null || acc.getAcc_Role().equals("user") ) {
+                            %>
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
                                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                     aria-expanded="false" aria-label="Toggle navigation">
@@ -95,6 +98,41 @@
                                 </a>
                                 
                             </div>
+                            <% 
+                                } else {
+                            %>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="menu_icon"><i class="fas fa-bars"></i></span>
+                            </button>
+                            <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="showProduct.jsp" id="navbarDropdown_3"
+                                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Product
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+                                            <a class="dropdown-item" href="showProduct.jsp">Show Product</a>
+                                            <a class="dropdown-item" href="addproduct.jsp">Add Product</a>
+                                        </div>
+                                    </li>
+                                    
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_2"
+                                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <%= acc.getAcc_Role()%>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+                                            <a class="dropdown-item" href="LoginServlet"> logout</a>
+                                        </div>
+                                    </li> 
+                                </ul>
+                            </div>
+                            <% 
+                                }
+                            %>
                         </nav>
                     </div>
                 </div>
