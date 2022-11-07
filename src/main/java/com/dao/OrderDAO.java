@@ -13,14 +13,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-=======
-import java.time.LocalDate;
-import java.util.ArrayList;
->>>>>>> dbd018c5f1b5170a30d3137d15080fef4a2f9dc4
+
 
 /**
  *
@@ -77,16 +73,16 @@ public class OrderDAO {
     
 
     
-     public ArrayList<Order> getOrderByAcc_id(int Acc_id) throws SQLException {
-        PreparedStatement pst = conn.prepareStatement("Select * from [Order] where  Acc_ID=? ");
-        pst.setString(1, Acc_id+"");
-        ResultSet rs = pst.executeQuery();
-        ArrayList<Order> or = new ArrayList<>();
-        while (rs.next()) {
-            or.add(new Order(Integer.valueOf(rs.getString(1)),Date.valueOf(rs.getString(2)), rs.getString(3), rs.getString(4)));
-        }
-        return or;
-    }
+//     public ArrayList<Order> getOrderBy(int Acc_id) throws SQLException {
+//        PreparedStatement pst = conn.prepareStatement("Select * from [Order] where  Acc_ID=? ");
+//        pst.setString(1, Acc_id+"");
+//        ResultSet rs = pst.executeQuery();
+//        ArrayList<Order> or = new ArrayList<>();
+//        while (rs.next()) {
+//            or.add(new Order(Integer.valueOf(rs.getString(1)),Date.valueOf(rs.getString(2)), rs.getString(3), rs.getString(4)));
+//        }
+//        return or;
+//    }
 
 
     public int OrderAddNew(Order or) throws SQLException {
@@ -95,9 +91,9 @@ public class OrderDAO {
 //        PreparedStatement pst = conn.prepareStatement("Insert into Student values(?,?,?,?,?,?)");
         pst = conn.prepareStatement("insert into [Order] values(?,?,?,?)");
         pst.setInt(1, or.getOrder_id());
-        pst.setDate(2, or.getOrder_date());
+        pst.setString(2, or.getOrder_date()+"");
         pst.setString(3, or.getOrder_phone());
-        pst.setString(3, or.getOrder_address());
+        pst.setString(4, or.getOrder_address());
         count = pst.executeUpdate();
         return count;
 
@@ -116,12 +112,9 @@ public class OrderDAO {
     }
     
     public void orderDelete(String order_id) throws SQLException {
-<<<<<<< HEAD
         pst = conn.prepareStatement("DELETE FROM [Cart] WHERE order_id=?");
         pst.setString(1, order_id);
         pst.executeUpdate();
-=======
->>>>>>> dbd018c5f1b5170a30d3137d15080fef4a2f9dc4
         pst = conn.prepareStatement("DELETE FROM [Order] WHERE order_id=?");
         pst.setString(1, order_id);
         pst.executeUpdate();

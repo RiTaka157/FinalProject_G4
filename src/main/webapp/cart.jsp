@@ -140,6 +140,7 @@
                                         <td colspan="2"></td>
                                         <td colspan="2" scope="col" class="text-center">
                                             <h4>Total Price: $<%=Sum%></h4>
+                                            <input name="Sum" value="<%=Sum%>" hidden readonly>
                                         </td>
                                     </tr>
 
@@ -166,19 +167,15 @@
                                                 <ul class="list">
                                                     <li>
                                                         Flat Rate: $5.00
-                                                        <input name="ship" id="ship" type="radio" >
+                                                        <input name="ship" id="ship" type="radio" value="Flat Rate: $5">
                                                     </li>
                                                     <li>
                                                         Free Shipping
-                                                        <input name="ship" id="ship" type="radio" checked>
-                                                    </li>
-                                                    <li>
-                                                        Flat Rate: $10.00
-                                                        <input name="ship" id="ship" type="radio">
+                                                        <input name="ship" id="ship" type="radio" value="Free Shipping: $0" checked>
                                                     </li>
                                                     <li class="active">
                                                         Local Delivery: $2.00
-                                                        <input name="ship" id="ship" type="radio" >
+                                                        <input name="ship" id="ship" type="radio" value=" Local Delivery: $2" >
                                                     </li>
                                                 </ul>
 

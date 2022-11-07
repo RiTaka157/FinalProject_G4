@@ -7,6 +7,7 @@ D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\connection\DBConnectio
 D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\dao\AccountDAO.java
 D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\dao\OrderDAO.java
 D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\servlets\CartServlet.java
+D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\servlets\OrderServlet.java
 D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\model\Product.java
 D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\model\Account.java
 D:\Code\WebApplication\FinalProject_Gr4\src\main\java\com\servlets\AdminServlet.java

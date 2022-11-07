@@ -150,8 +150,8 @@ public class CartDAO {
     public int cartUpdateOrder(int Acc_ID, int order_id) throws SQLException {
         int count = 0;
         pst = conn.prepareStatement("UPDATE Cart SET order_id=? WHERE Acc_ID=? And order_id is null");
-        pst.setString(1, Acc_ID + "");
-        pst.setString(2, order_id + "");
+        pst.setInt(2, Acc_ID );
+        pst.setInt(1, order_id);
         count = pst.executeUpdate();
         return count;
     }
