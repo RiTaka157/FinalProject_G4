@@ -5,12 +5,16 @@
 package com.dao;
 
 import com.connection.DBConnection;
+import com.model.Cart;
 import com.model.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,7 +32,7 @@ public class OrderDAO {
 
     public ResultSet OrderGetAll() throws SQLException {
         Statement st = conn.createStatement();
-        rs = st.executeQuery("Select* from Order");
+        rs = st.executeQuery("Select* from [Order]");
         return rs;
     }
     
@@ -37,6 +41,21 @@ public class OrderDAO {
         rs = st.executeQuery("Select COUNT(*) as CountOrder from Order");
         rs.next();
         return rs.getInt("CountOrder");
+    }
+      
+    public boolean isAccHasOrder(int acc_id, int order_id) {
+            try {
+                CartDAO cartDAO = new CartDAO();
+                ArrayList<Cart> carts = cartDAO.getCartByAcc_ID(acc_id);
+                for (Cart cart : carts) {
+                    if (cart.getOrder_id() == order_id) return true;
+                }
+                        } catch (ClassNotFoundException ex) {
+                Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return false;
     }
 
     public Order getOrderById(int order_id) throws SQLException {
@@ -78,7 +97,10 @@ public class OrderDAO {
     }
     
     public void orderDelete(String order_id) throws SQLException {
-        pst = conn.prepareStatement("DELETE FROM Order WHERE order_id=?");
+        pst = conn.prepareStatement("DELETE FROM [Cart] WHERE order_id=?");
+        pst.setString(1, order_id);
+        pst.executeUpdate();
+        pst = conn.prepareStatement("DELETE FROM [Order] WHERE order_id=?");
         pst.setString(1, order_id);
         pst.executeUpdate();
     }

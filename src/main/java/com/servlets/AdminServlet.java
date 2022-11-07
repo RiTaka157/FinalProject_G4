@@ -4,6 +4,7 @@
  */
 package com.servlets;
 
+import com.dao.OrderDAO;
 import com.dao.ProductDAO;
 import com.model.Product;
 import java.io.IOException;
@@ -58,7 +59,17 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        if (request.getParameter("order_id") != null) {
+            try {
+                OrderDAO orderDAO = new OrderDAO();
+                orderDAO.orderDelete(request.getParameter("order_id"));
+                response.sendRedirect("showOrder.jsp");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(AdminServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     /**
