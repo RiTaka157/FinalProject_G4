@@ -36,12 +36,6 @@
         <!-- style CSS -->
         <link rel="stylesheet" href="css/style.css">
 
-        <style>
-            #foot {
-                height: 50px;
-                background-color: #4B3049;
-            }
-        </style>
     </head>
 
     <body>
@@ -168,7 +162,7 @@
                             <div class="single_product_item_thumb">
                                 <img src="<%= pro.getPdt_image()%>" alt="#" class="img-fluid">
                             </div>
-                            <h3> <a href="single-product.jsp"><%= pro.getPdt_name()%></a> </h3>
+                            <h3> <a href="single-product.jsp?product_id=<%= pro.getPdt_id()%>"><%= pro.getPdt_name()%></a> </h3>
                             <p>From $ <%= pro.getPdt_price()%></p>
                         </div>
                     </div>
@@ -189,28 +183,28 @@
                                     <img src="img/client.png" alt="#">
                                 </div>
                                 <p>CE000000</p>
-                                <h5>- Đỗ Huỳnh Anh Vũ</h5>
+                                <h5>- TÊN tv</h5>
                             </div>
                             <div class="single_client_review">
                                 <div class="client_img">
                                     <img src="img/client_1.png" alt="#">
                                 </div>
-                                <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
-                                <h5>- Micky Mouse</h5>
+                                <p>CE000000</p>
+                                <h5>- TÊN tv</h5>
                             </div>
                             <div class="single_client_review">
                                 <div class="client_img">
                                     <img src="img/client_2.png" alt="#">
                                 </div>
-                                <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
-                                <h5>- Micky Mouse</h5>
+                                <p>CE000000</p>
+                                <h5>- TÊN tv</h5>
                             </div>
                             <div class="single_client_review">
                                 <div class="client_img">
                                     <img src="img/client.png" alt="#">
                                 </div>
-                                <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
-                                <h5>- Micky Mouse</h5>
+                                <p>CE000000</p>
+                                <h5>- TÊN tv</h5>
                             </div>
                         </div>
                     </div>

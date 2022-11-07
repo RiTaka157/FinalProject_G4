@@ -40,7 +40,6 @@ public class ProductDAO {
         return rs;
     }
     
-<<<<<<< HEAD
     public Product[] getProducts() throws SQLException {
         ResultSet rs = productGetAll();
         Product[] products = new Product[productGetLenght()];
@@ -49,7 +48,8 @@ public class ProductDAO {
             products[count++] = new Product(Integer.parseInt(rs.getString(1)), rs.getString(2), rs.getString(3), rs.getString(4));
         }
         return products;
-=======
+    }
+    
       public ArrayList<Product> productGetAll_Arr() throws SQLException {
         Statement st = conn.createStatement();
         ArrayList<Product> arr = new ArrayList<>();
@@ -58,7 +58,6 @@ public class ProductDAO {
               arr.add( new Product(Integer.parseInt(rs.getString(1)), rs.getString(2), rs.getString(3), rs.getString(4)));
           }
         return arr;
->>>>>>> 6ac5c82aca22eb1e6610d3a8467fc68e21a6fbaa
     }
     
       public int productGetLenght() throws SQLException {

@@ -17,6 +17,12 @@ public class Cart {
     public Cart() {
     }
 
+    public Cart(String Acc_ID, int pdt_id, String quantity) {
+        this.Acc_ID = Acc_ID;
+        this.pdt_id = pdt_id;
+        this.quantity = quantity;
+    }
+
     public Cart(String Acc_ID, int pdt_id, String quantity, int order_id) {
         this.Acc_ID = Acc_ID;
         this.pdt_id = pdt_id;

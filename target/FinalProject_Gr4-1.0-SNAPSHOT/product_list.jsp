@@ -101,7 +101,7 @@
                                 %>
                                 <div class="col-lg-6 col-sm-6">
                                     <div class="single_product_item">
-                                        <img src="<%=product.getPdt_image()%>.png" alt="#" class="img-fluid">
+                                        <img src="<%=product.getPdt_image()%>" alt="#" class="img-fluid">
                                         <h3> <a href="single-product.jsp?product_id=<%= product.getPdt_id() %>"><%= product.getPdt_name()%></a> </h3>
                                         <p>From <%= product.getPdt_price() %>$</p>
                                     </div>

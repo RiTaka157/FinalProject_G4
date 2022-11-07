@@ -10,12 +10,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-
 
         <%  String userName = "";
             if (request.getCookies().length > 0) {
@@ -95,9 +89,11 @@
                             </div>
                             <div class="hearer_icon d-flex align-items-center">
                                 <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
-                                <a href="cart.jsp">
+                                
+                                <a href="<%= (acc==null) ? "login.jsp" : "cart.jsp"%>">
                                     <i class="flaticon-shopping-cart-black-shape"></i>
                                 </a>
+                                
                             </div>
                         </nav>
                     </div>
@@ -113,5 +109,5 @@
                 </div>
             </div>
         </header>
-    </body>
+
 </html>

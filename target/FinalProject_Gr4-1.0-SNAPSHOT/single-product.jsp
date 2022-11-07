@@ -41,7 +41,9 @@
         <!-- Header part end-->
         <% 
             ProductDAO dao = new ProductDAO();
-            Product product = dao.getProductById(Integer.parseInt(request.getParameter("product_id")));
+            
+            int id= Integer.parseInt(request.getParameter("product_id"));
+            Product product = dao.getProductById(id);
         %>
         <!-- breadcrumb part start-->
         <section class="breadcrumb_part single_product_breadcrumb">
@@ -57,6 +59,8 @@
         <!-- breadcrumb part end-->
 
         <!--================Single Product Area =================-->
+        <form action="CartServlet" method="get">
+            <input name="id" type="text" value="<%= id %>" hidden readonly >
         <div class="product_image_area">
             <div class="container">
                 <div class="row justify-content-center">
@@ -66,7 +70,7 @@
                                 for (int i = 0; i < 3; i++) {
                             %>
                             <div class="single_product_img">
-                                <img src="<%= product.getPdt_image()  %>.png" alt="#" class="img-fluid">
+                                <img src="<%= product.getPdt_image()  %>" alt="#" class="img-fluid">
                             </div>
                             <%
                                 }
@@ -90,7 +94,7 @@
                                     <p>$<%= product.getPdt_price() %></p>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a href="#" class="btn_3">add to cart</a>
+                                    <input  class="btn_3" type="submit" value="Add to cart">
                                 </div>
                             </div>
                         </div>
@@ -98,6 +102,7 @@
                 </div>
             </div>
         </div>
+        </form>
         <!--================End Single Product Area =================-->
         <!-- subscribe part here -->
         <section class="subscribe_part section_padding">
